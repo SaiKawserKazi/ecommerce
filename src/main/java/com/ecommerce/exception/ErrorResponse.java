@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class ErrorResponse implements IErrorResponse{
 
-    @JsonProperty("ApplyTransactionResponse")
+    @JsonProperty("EcommerceAPIResponse")
     private ErrorResponseBody errorResponseBody;
 
     public ErrorResponse(ErrorResponseBody errorResponseBody) {
