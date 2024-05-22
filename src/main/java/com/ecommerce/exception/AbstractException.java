@@ -21,11 +21,6 @@ public class AbstractException extends Exception {
         this.requestId = String.valueOf(UUID.randomUUID());
     }
 
-/*    public AbstractException(String messageCode, String requestId) {
-        super(messageCode);
-        this.messageCode = messageCode;
-        this.requestId = requestId;
-    }*/
 
     public AbstractException(String messageCode, String logMessageCode, String requestId) {
         super(messageCode);

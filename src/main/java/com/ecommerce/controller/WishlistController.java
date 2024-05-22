@@ -2,6 +2,7 @@ package com.ecommerce.controller;
 
 import com.ecommerce.dto.WishlistDTO;
 import com.ecommerce.entity.Wishlist;
+import com.ecommerce.exception.AbstractException;
 import com.ecommerce.service.WishlistService;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class WishlistController {
     }
 
     @GetMapping("/{customerId}")
-    public List<WishlistDTO> getWishlistByCustomerId(@PathVariable UUID customerId) {
+    public List<WishlistDTO> getWishlistByCustomerId(@PathVariable UUID customerId)throws AbstractException {
         List<Wishlist> wishlist = wishlistService.getWishlistByCustomerId(customerId);
         return wishlist.stream()
                 .map(this::convertToDTO)

@@ -1,6 +1,7 @@
 package com.ecommerce.controller;
 
 import com.ecommerce.dto.TopSellingItemDTO;
+import com.ecommerce.exception.AbstractException;
 import com.ecommerce.service.SaleService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,24 +23,24 @@ public class SaleController {
     }
 
     @GetMapping("/total-today")
-    public double getTotalSaleAmountForToday() {
+    public double getTotalSaleAmountForToday() throws AbstractException {
         Optional<Double> totalAmount = saleService.getTotalSaleAmountForToday();
         return totalAmount.orElse(0.0);
     }
 
     @GetMapping("/max-sale-day")
-    public LocalDate getMaxSaleDay(@RequestParam("startDate") LocalDate startDate, @RequestParam("endDate") LocalDate endDate) {
+    public LocalDate getMaxSaleDay(@RequestParam("startDate") LocalDate startDate, @RequestParam("endDate") LocalDate endDate)  throws AbstractException{
         Optional<LocalDate> maxSaleDay = saleService.getMaxSaleDay(startDate, endDate);
         return maxSaleDay.orElse(null);
     }
 
     @GetMapping("/top-selling-items")
-    public List<TopSellingItemDTO> getTopSellingItemsOfAllTime() {
+    public List<TopSellingItemDTO> getTopSellingItemsOfAllTime()  throws AbstractException{
         return saleService.getTopSellingItemsOfAllTime();
     }
 
     @GetMapping("/top-selling-items-last-month")
-    public List<TopSellingItemDTO> getTopSellingItemsOfLastMonth() {
+    public List<TopSellingItemDTO> getTopSellingItemsOfLastMonth()  throws AbstractException{
         return saleService.getTopSellingItemsOfLastMonth();
     }
 }
