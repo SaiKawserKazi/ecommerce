@@ -33,8 +33,9 @@ public class SaleServiceImpl implements SaleService{
 
     @Override
     public Optional<LocalDate> getMaxSaleDay(LocalDate startDate, LocalDate endDate) {
-        return saleRepository.findMaxSaleDayWithinDateRange(startDate, endDate, PageRequest.of(0, 1));
+        return saleRepository.findMaxSaleDayWithinDateRange(startDate, endDate);
     }
+
 
     @Override
     public List<TopSellingItemDTO> getTopSellingItemsOfAllTime() {
